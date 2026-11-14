@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-27 ನೇ ಸಾಲಿನ SDMC, ಸಭೆ/ತರಬೇತಿಯ ವರದಿ</title>
+    <style>
+        :root {
+            --primary-color: #1b5e20;
+            --secondary-color: #2e7d32;
+            --accent-color: #ffeb3b;
+            --bg-color: #f4f6f8;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Nudi 01', 'Tunga', 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+        }
+
+        /* Navigation Button Hub */
+        .nav-hub {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            background: #ffffff;
+            border-bottom: 2px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .action-btn { background-color: #d32f2f; }
+        .action-btn:hover { background-color: #b71c1c; }
+
+        .reset-btn { background-color: #e65100; }
+        .reset-btn:hover { background-color: #bf360c; }
+
+        /* Container Pages */
+        .page-container {
+            max-width: 900px;
+            margin: 25px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: none;
+        }
+
+        .page-container.active {
+            display: block;
+        }
+
+        /* Pure White Background for pages */
+        #page-cover, #page-meeting {
+            background-color: #ffffff !important;
+            border: 1px solid #e0e0e0;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 2px solid var(--primary-color);
+            background-color: #ffffff !important;
+        }
+
+        /* Beautiful Cover Page Design */
+        .cover-box {
+            border: 6px double var(--primary-color);
+            padding: 35px 25px;
+            text-align: center;
+            background: radial-gradient(circle, #ffffff 60%, #f1f8e9 100%);
+            border-radius: 12px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .emblem-img {
+            width: 85px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .cover-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-subtitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d32f2f;
+            margin: 15px 0 25px 0;
+            background: #ffebee;
+            padding: 8px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .cover-details-table {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .cover-details-table td {
+            padding: 12px 15px;
+            border: 1px solid #c8e6c9 !important;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .cover-details-table td:first-child {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            width: 40%;
+        }
+
+        /* School Info Box in Report Page */
+        .school-info-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            background: #f1f8e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+        }
+
+        .school-info-box div {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .school-info-box input {
+            width: 100%;
+            margin-top: 4px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            font-size: 13px;
+        }
+
+        input[type="text"], input[type="date"], select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 220px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        th, td {
+            border: 1px solid #333 !important;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #e8f5e9 !important;
+            color: var(--primary-color);
+        }
+
+        /* Camera Section */
+        .camera-box {
+            text-align: center;
+            border: 2px dashed #90a4ae;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        video {
+            max-width: 100%;
+            width: 450px;
+            height: auto;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        #photo-preview {
+            max-width: 100%;
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        /* Footer Styling: Bold & Blinking on Screen */
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 15px;
+            background-color: #1a237e;
+            color: #ffffff;
+            font-size: 15px;
+            border-top: 4px solid #ffeb3b;
+        }
+
+        .blinking-footer {
+            font-weight: bold;
+            animation: blinker 1.5s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0.4; color: #ffeb3b; }
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .nav-hub, .no-print, button, footer {
+                display: none !important;
+            }
+            .page-container {
+                display: block !important;
+                box-shadow: none;
+                margin: 0;
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+                page-break-after: always;
+            }
+            .cover-box {
+                border: 6px double #000 !important;
+                background: #ffffff !important;
+            }
+            table {
+                page-break-inside: avoid;
+            }
+            th, td {
+                border: 1px solid #000 !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="no-print">
+        <h1>2026-27 ನೇ ಸಾಲಿನ SDMC, ಸಭೆ/ತರಬೇತಿಯ ವರದಿ ವ್ಯವಸ್ಥೆ</h1>
+        <p>ಡಿಜಿಟಲ್ ವರದಿ, ಹಾಜರಾತಿ, ಕ್ಯಾಮೆರಾ ಮತ್ತು ಕ್ಯಾಶ್ ಮೆಮೋ ಬಿಲ್ ಜನರೇಟರ್ ಪೋರ್ಟಲ್</p>
+    </header>
+
+    <!-- Navigation Button Hub -->
+    <div class="nav-hub no-print">
+        <button class="nav-btn" onclick="showPage('page-cover')">COVER PAGE</button>
+        <button class="nav-btn" onclick="showPage('page-meeting')">MEETING REPORT</button>
+        <button class="nav-btn" onclick="showPage('page-attendance')">ATTENDANCE SHEET</button>
+        <button class="nav-btn" onclick="showPage('page-camera')">CAMERA</button>
+        <button class="nav-btn" onclick="showPage('page-bill1')">MARUTI BILL</button>
+        <button class="nav-btn" onclick="showPage('page-bill2')">VINAYAKA BOOKS</button>
+        <button class="nav-btn" onclick="showPage('page-bill3')">VIDYA STUDIO</button>
+        <button class="nav-btn action-btn" onclick="window.print()">Print All (A4 Portrait)</button>
+        <button class="nav-btn reset-btn" onclick="resetAllData()">Reset</button>
+    </div>
+
+    <!-- 1. SEPARATE BEAUTIFUL COVER PAGE -->
+    <div id="page-cover" class="page-container active">
+        <div class="cover-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Government_of_Karnataka_Logo.svg" alt="Karnataka Emblem" class="emblem-img">
+            <div style="font-size: 15px; font-weight: bold; color: #555; letter-spacing: 1px;">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</div>
+            <div class="cover-title" contenteditable="true">ಶಾಲಾ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣಾ ಸಮಿತಿ (SDMC)</div>
+            <div class="cover-subtitle" contenteditable="true">2026-27 ನೇ ಸಾಲಿನ ಮೊದಲನೇ SDMC ಸಭೆ / ತರಬೇತಿ ವರದಿ</div>
+            
+            <br>
+            <table class="cover-details-table">
+                <tr>
+                    <td>ಶಾಲೆಯ ಹೆಸರು:</td>
+                    <td contenteditable="true" id="cov-school" style="color: #d32f2f;">[ ಶಾಲೆಯ ಹೆಸರು ನಮೂದಿಸಿ ]</td>
+                </tr>
+                <tr>
+                    <td>ಕ್ಲಸ್ಟರ್ ಹೆಸರು:</td>
+                    <td contenteditable="true" id="cov-cluster">[ ಕ್ಲಸ್ಟರ್ ಹೆಸರು ನಮೂದಿಸಿ ]</td>
+                </tr>
+                <tr>
+                    <td>ತಾಲ್ಲೂಕಿನ ಹೆಸರು:</td>
+                    <td contenteditable="true" id="cov-taluk">[ ತಾಲ್ಲೂಕು ಹೆಸರು ನಮೂದಿಸಿ ]</td>
+                </tr>
+                <tr>
+                    <td>ಶೈಕ್ಷಣಿಕ ಸಾಲು:</td>
+                    <td contenteditable="true" id="cov-year">2026-27</td>
+                </tr>
+                <tr>
+                    <td>ಸಭೆ ನಡೆದ ದಿನಾಂಕ:</td>
+                    <td contenteditable="true" id="cov-date">DD-MM-YYYY</td>
+                </tr>
+            </table>
+            
+            <p style="font-size: 11px; color: #666; margin-top: 25px;" class="no-print">* ಎಲ್ಲಾ ವಿವರಗಳನ್ನು ನೇರವಾಗಿ ಕ್ಲಿಕ್ ಮಾಡಿ ತಿದ್ದಬಹುದು.</p>
+        </div>
+        <div style="text-align: center; margin-top: 15px;" class="no-print">
+            <button class="nav-btn" onclick="showPage('page-meeting')">ವರದಿ ಪುಟಕ್ಕೆ ಹೋಗಿ &gt;&gt;</button>
+        </div>
+    </div>
+
+    <!-- 2. SDMC MEETING REPORT PAGE -->
+    <div id="page-meeting" class="page-container">
+        <h2 style="text-align: center; color: var(--primary-color);" contenteditable="true">2026-27 ನೇ ಸಾಲಿನ ಮೊದಲನೇ SDMC ಸಭೆ / ತರಬೇತಿ</h2>
+
+        <!-- School Info & Update Box -->
+        <div class="school-info-box">
+            <div>
+                <label>SCHOOL NAME:</label>
+                <input type="text" id="rep-school" placeholder="ಶಾಲೆಯ ಹೆಸರು ನಮೂದಿಸಿ">
+            </div>
+            <div>
+                <label>CLUSTER NAME:</label>
+                <input type="text" id="rep-cluster" placeholder="ಕ್ಲಸ್ಟರ್ ಹೆಸರು ನಮೂದಿಸಿ">
+            </div>
+            <div>
+                <label>TALUK NAME:</label>
+                <input type="text" id="rep-taluk" placeholder="ತಾಲ್ಲೂಕು ಹೆಸರು ನಮೂದಿಸಿ">
+            </div>
+            <div>
+                <label>ದಿನಾಂಕ & ಅಧ್ಯಕ್ಷರ ಹೆಸರು:</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="meeting-date" placeholder="DD-MM-YYYY" style="width: 100px;">
+                    <input type="text" id="president-name" placeholder="ಅಧ್ಯಕ್ಷರ ಹೆಸರು">
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: right; margin-bottom: 12px;" class="no-print">
+            <button class="nav-btn" style="padding: 6px 15px;" onclick="updateMeetingHeader()">Update Header Details</button>
+        </div>
+
+        <div id="meeting-header-text" style="font-size: 13px; line-height: 1.6; margin-bottom: 15px;" contenteditable="true">
+            ದಿನಾಂಕ : <span id="disp-date">[ದಿನಾಂಕ]</span> ರಂದು <span id="disp-school">[ಶಾಲೆಯ ಹೆಸರು]</span> ಶಾಲೆಯಲ್ಲಿ <span id="disp-cluster">[ಕ್ಲಸ್ಟರ್ ಹೆಸರು]</span> ವ್ಯಾಪ್ತಿಯ <span id="disp-taluk">[ತಾಲ್ಲೂಕು ಹೆಸರು]</span> ಶಾಲಾ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣಾ ಸಮಿತಿಯ ಮೊದಲನೇ ಸಭೆ/ತರಬೇತಿಯನ್ನು SDMC ಅಧ್ಯಕ್ಷರಾದ <span id="disp-president">[ಅಧ್ಯಕ್ಷರ ಹೆಸರು]</span> ಅಧ್ಯಕ್ಷತೆಯಲ್ಲಿ ನಡೆಸಲಾಯಿತು. ಸಭೆಯಲ್ಲಿ ಶಾಲೆಯ ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿ, ಮಕ್ಕಳ ಹಕ್ಕುಗಳು, ಸಂವಿಧಾನದ ಮಹತ್ವ, ಕಲಿಕಾ ಮೌಲ್ಯಮಾಪನ ಹಾಗೂ ಶಾಲೆಯ ಭೌತಿಕ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸೌಲಭ್ಯಗಳ ಅಭಿವೃದ್ಧಿಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಕಂಡ ವಿಷಯಗಳನ್ನು ಚರ್ಚಿಸಿ ನಿರ್ಣಯಗಳನ್ನು ಕೈಗೊಳ್ಳಲಾಯಿತು.
+            <br><b>ಪ್ರಾರ್ಥನೆ:</b> ಪ್ರಾರಂಭವಾಯಿತು &nbsp;&nbsp;&nbsp;&nbsp; <b>ಸ್ವಾಗತ:</b> ಎಲ್ಲರಿಗೂ ಸ್ವಾಗತ ಕೋರಲಾಯಿತು.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 8%;">ಕ್ರ ಸಂ</th>
+                    <th style="width: 35%;">ಚರ್ಚಾಂಶಗಳು</th>
+                    <th style="width: 57%;">ಕೈಗೊಂಡ ತೀರ್ಮಾನಗಳು</th>
+                </tr>
+            </thead>
+            <tbody id="meeting-table-body">
+                <tr>
+                    <td contenteditable="true">1</td>
+                    <td contenteditable="true">ಮಕ್ಕಳ ದಿನಾಚರಣೆ</td>
+                    <td contenteditable="true">
+                        • ನವೆಂಬರ್ 14ರಂದು ಮಕ್ಕಳ ದಿನಾಚರಣೆಯನ್ನು ಅರ್ಥಪೂರ್ಣವಾಗಿ ಆಚರಿಸಲಾಯಿತು.<br>
+                        • ಮಕ್ಕಳ ಹಕ್ಕುಗಳ ಬಗ್ಗೆ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಅರಿವು ಮೂಡಿಸಲಾಯಿತು.<br>
+                        • ಮಕ್ಕಳಿಗೆ ತಮ್ಮ ಅಭಿಪ್ರಾಯಗಳನ್ನು ಮುಕ್ತವಾಗಿ ವ್ಯಕ್ತಪಡಿಸಲು ಅವಕಾಶ ಕಲ್ಪಿಸಲಾಯಿತು.<br>
+                        • ಮಕ್ಕಳ ಪ್ರತಿಭೆ, ಆಸಕ್ತಿ ಹಾಗೂ ಸೃಜನಶೀಲತೆಯನ್ನು ಪ್ರೋತ್ಸಾಹಿಸುವ ಚಟುವಟಿಕೆಗಳನ್ನು ಹಮ್ಮಿಕೊಳ್ಳಲಾಗಿತ್ತು.<br>
+                        • ಎಲ್ಲಾ ಮಕ್ಕಳು ಕಾರ್ಯಕ್ರಮಗಳಲ್ಲಿ ಸಕ್ರಿಯವಾಗಿ ಭಾಗವಹಿಸುವಂತೆ ನೋಡಿಕೊಳ್ಳಲಾಯಿತು.
+                    </td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">2</td>
+                    <td contenteditable="true">ಸಂವಿಧಾನ ದಿನಾಚರಣೆ</td>
+                    <td contenteditable="true">
+                        • ನವೆಂಬರ್ 26ರಂದು ಸಂವಿಧಾನ ದಿನಾಚರಣೆಯನ್ನು ಆಚರಿಸುವ ಕುರಿತು ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಭಾರತದ ಸಂವಿಧಾನದ ಮಹತ್ವ ಮತ್ತು ಪ್ರಾಮುಖ್ಯತೆಯನ್ನು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಿಳಿಸಲಾಯಿತು.<br>
+                        • ಸಂವಿಧಾನವು ನಾಗರಿಕರಿಗೆ ನೀಡಿರುವ ಮೂಲಭೂತ ಹಕ್ಕುಗಳ ಬಗ್ಗೆ ಅರಿವು ಮೂಡಿಸಲಾಯಿತು.<br>
+                        • ನಾಗರಿಕರ ಕರ್ತವ್ಯಗಳು ಮತ್ತು ಜವಾಬ್ದಾರಿಗಳನ್ನು ತಿಳಿಸಿಕೊಡಲಾಯಿತು.<br>
+                        • ಸಂವಿಧಾನ ಶಿಲ್ಪಿ ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್ ಅವರ ಜೀವನ, ಸಾಧನೆ ಹಾಗೂ ಸಂವಿಧಾನ ರಚನೆಗೆ ನೀಡಿದ ಕೊಡುಗೆಯನ್ನು ಪರಿಚಯಿಸಲಾಯಿತು.<br>
+                        <b>ನಿರ್ಣಯ:</b> ಸಂವಿಧಾನದ ಆಶಯಗಳಾದ ಸಮಾನತೆ, ಸ್ವಾತಂತ್ರ್ಯ, ಭ್ರಾತೃತ್ವ ಮತ್ತು ನ್ಯಾಯದ ಮೌಲ್ಯಗಳನ್ನು ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಬೆಳೆಸುವ ಉದ್ದೇಶದಿಂದ ಸಂವಿಧಾನ ದಿನಾಚರಣೆಯನ್ನು ಆಚರಿಸಲು ತೀರ್ಮಾನಿಸಲಾಯಿತು.
+                    </td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">3</td>
+                    <td contenteditable="true">CCE ಚಟುವಟಿಕೆಗಳು</td>
+                    <td contenteditable="true">
+                        • ವಿದ್ಯಾರ್ಥಿಗಳ ಕಲಿಕಾ ಪ್ರಗತಿಯನ್ನು ನಿರಂತರವಾಗಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡುವ ಕುರಿತು ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಆಯಾ ತಿಂಗಳಲ್ಲಿ ವಿದ್ಯಾರ್ಥಿಗಳು ಸಾಧಿಸಿರುವ ಕಲಿಕಾ ಫಲಗಳನ್ನು ಆಧರಿಸಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡುವುದು.<br>
+                        • ತರಗತಿವಾರು ಮತ್ತು ವಿಷಯವಾರು CCE ಚಟುವಟಿಕೆಗಳನ್ನು ಪಾರದರ್ಶಕವಾಗಿ ನಿರ್ವಹಿಸುವುದು.<br>
+                        • ಪ್ರತಿಯೊಬ್ಬ ವಿದ್ಯಾರ್ಥಿಯ ಕಲಿಕಾ ಸಾಮರ್ಥ್ಯ ಮತ್ತು ಪ್ರಗತಿಯನ್ನು ಗುರುತಿಸುವುದು.<br>
+                        • ಕಲಿಕೆಯಲ್ಲಿ ಹಿಂದುಳಿದ ಮಕ್ಕಳಿಗೆ ಅಗತ್ಯವಾದ ಪರಿಹಾರ ಬೋಧನೆ ಹಾಗೂ ವಿಶೇಷ ಗಮನ ನೀಡುವುದು.<br>
+                        • ಮೌಲ್ಯಮಾಪನದ ಫಲಿತಾಂಶಗಳನ್ನು ದಾಖಲಿಸಿ ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರಗತಿಯನ್ನು ಪರಿಶೀಲಿಸುವುದು.<br>
+                        <b>ನಿರ್ಣಯ:</b> CCE ಚಟುವಟಿಕೆಗಳನ್ನು ನಿಯಮಿತವಾಗಿ ಹಾಗೂ ಪಾರದರ್ಶಕವಾಗಿ ನಿರ್ವಹಿಸಿ, ಪ್ರತಿಯೊಬ್ಬ ವಿದ್ಯಾರ್ಥಿಯ ಕಲಿಕಾ ಪ್ರಗತಿಯನ್ನು ಸುಧಾರಿಸಲು ಅಗತ್ಯ ಕ್ರಮ ಕೈಗೊಳ್ಳಲು ತೀರ್ಮಾನಿಸಲಾಯಿತು.
+                    </td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">4</td>
+                    <td contenteditable="true">ಶಾಲೆಗಳ ಭೌತಿಕ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸೌಲಭ್ಯಗಳನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸುವ ಕುರಿತು</td>
+                    <td contenteditable="true">
+                        • ರಾಜ್ಯದ 590 ಬಿ.ಎಂ.ಸಿ. ಶಾಲೆಗಳ ಭೌತಿಕ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸೌಲಭ್ಯಗಳನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸುವ ಉದ್ದೇಶದಿಂದ 2026-27ನೇ ಸಾಲಿನ PAB ಅನುಮೋದಿತ ಚಟುವಟಿಕೆಗಳ ಕುರಿತು ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಈ ಸಂಬಂಧ ದಿನಾಂಕ 21.09.2026ರ ಆದೇಶದಂತೆ ಅನುಮೋದಿತ ಚಟುವಟಿಕೆಗಳನ್ನು ಅನುಷ್ಠಾನಗೊಳಿಸುವ ಕುರಿತು ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಶಾಲೆಯಲ್ಲಿರುವ ಭೌತಿಕ ಸೌಲಭ್ಯಗಳ ಅಗತ್ಯತೆಗಳನ್ನು ಗುರುತಿಸಲಾಯಿತು ಹಾಗೂ ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿಗೆ ಅಗತ್ಯವಿರುವ ಸೌಲಭ್ಯಗಳ ಬಗ್ಗೆ ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಅನುಮೋದಿತ ಅನುದಾನ ಮತ್ತು ಚಟುವಟಿಕೆಗಳ ವಿವರಗಳನ್ನು SDMC ಸದಸ್ಯರಿಗೆ ತಿಳಿಸಿ, ಅನುದಾನವನ್ನು ನಿಗದಿತ ಉದ್ದೇಶಗಳಿಗೆ ಮಾತ್ರ ಬಳಸುವಂತೆ ಕ್ರಮವಹಿಸುವುದು.<br>
+                        • ಕಾಮಗಾರಿಗಳು ಮತ್ತು ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಗಳನ್ನು ನಿಯಮಾನುಸಾರ ಹಾಗೂ ಪಾರದರ್ಶಕವಾಗಿ ನಿರ್ವಹಿಸಿ ಪ್ರಗತಿಯನ್ನು ಪರಿಶೀಲಿಸುವುದು.<br>
+                        <b>ನಿರ್ಣಯ:</b> PAB ಅಡಿಯಲ್ಲಿ ಅನುಮೋದಿತವಾಗಿರುವ ಚಟುವಟಿಕೆಗಳನ್ನು ಮಾರ್ಗಸೂಚಿಗಳನ್ವಯ SDMC ಸದಸ್ಯರ ಸಹಕಾರದೊಂದಿಗೆ ಪಾರದರ್ಶಕವಾಗಿ ಅನುಷ್ಠಾನಗೊಳಿಸಲು ತೀರ್ಮಾನಿಸಲಾಯಿತು.
+                    </td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">5</td>
+                    <td contenteditable="true">ಇತರೆ ವಿಷಯಗಳು</td>
+                    <td contenteditable="true">
+                        • ಶಾಲೆಯ ಅಗತ್ಯತೆಗಳಿಗೆ ಅನುಗುಣವಾಗಿ ಇತರೆ ವಿಷಯಗಳ ಬಗ್ಗೆ ಚರ್ಚಿಸಲಾಯಿತು.<br>
+                        • ಶಾಲೆಯ ಸ್ವಚ್ಛತೆ ಮತ್ತು ನೈರ್ಮಲ್ಯ ಕಾಪಾಡುವುದು.<br>
+                        • ವಿದ್ಯಾರ್ಥಿಗಳ ಹಾಜರಾತಿ ಹೆಚ್ಚಿಸಲು ಕ್ರಮವಹಿಸುವುದು.<br>
+                        • ಶಾಲೆಯ ಶೈಕ್ಷಣಿಕ ಗುಣಮಟ್ಟವನ್ನು ಸುಧಾರಿಸುವುದು ಹಾಗೂ ಅಭಿವೃದ್ಧಿ ಕಾರ್ಯಗಳಲ್ಲಿ ಪೋಷಕರು ಮತ್ತು SDMC ಸದಸ್ಯರ ಸಹಕಾರ ಪಡೆಯುವುದು.<br>
+                        • ಮಕ್ಕಳ ಸುರಕ್ಷತೆ ಮತ್ತು ಕಲಿಕಾ ವಾತಾವರಣಕ್ಕೆ ಆದ್ಯತೆ ನೀಡುವುದು.<br>
+                        <b>ನಿರ್ಣಯ:</b> ಶಾಲೆಯ ಸರ್ವತೋಮುಖ ಅಭಿವೃದ್ಧಿಗಾಗಿ SDMC ಸದಸ್ಯರು, ಶಿಕ್ಷಕರು ಹಾಗೂ ಪೋಷಕರು ಪರಸ್ಪರ ಸಹಕಾರದಿಂದ ಕಾರ್ಯನಿರ್ವಹಿಸಲು ತೀರ್ಮಾನಿಸಲಾಯಿತು.
+                    </td>
+                </tr>
+                <tr>
+                    <td contenteditable="true">6</td>
+                    <td contenteditable="true">ವಂದನಾರ್ಪಣೆ</td>
+                    <td contenteditable="true">ಭಾಗವಹಿಸಿದ್ದ ಸದಸ್ಯರಿಗೆಲ್ಲಾ ವಂದನೆಗಳನ್ನು ಸಲ್ಲಿಸಲಾಯಿತು.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="font-size: 11px; color: #666;" class="no-print">* ಎಲ್ಲಾ ಕೋಶಗಳನ್ನು ನೇರವಾಗಿ ಕ್ಲಿಕ್ ಮಾಡಿ ತಿದ್ದಬಹುದು (Editable).</p>
+    </div>
+
+    <!-- 3. SDMC ATTENDANCE SHEET PAGE -->
+    <div id="page-attendance" class="page-container" style="background-color: #ffffff;">
+        <h2 style="text-align: center; color: var(--primary-color);" contenteditable="true">ಭಾಗವಹಿಸಿದ್ದ SDMC ಸದಸ್ಯರ ಸಹಿಗಳು</h2>
+        <p style="text-align: center;">ಸಭೆಯಲ್ಲಿ ಹಾಜರಿದ್ದ ಸದಸ್ಯರ ವಿವರ:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ಕ್ರ ಸಂ</th>
+                    <th style="width: 45%;">SDMC ಸದಸ್ಯರ ಹೆಸರು</th>
+                    <th style="width: 25%;">ಹುದ್ದೆ (Designation)</th>
+                    <th style="width: 20%;">ಸಹಿ</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-tbody">
+                <tr><td>1</td><td contenteditable="true"></td><td><strong>PRESIDENT</strong></td><td></td></tr>
+                <tr><td>2</td><td contenteditable="true"></td><td><strong>VICE PRESIDENT</strong></td><td></td></tr>
+                <tr><td>3</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>4</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>5</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>6</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>7</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>8</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>9</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+                <tr><td>10</td><td contenteditable="true"></td><td>MEMBER</td><td></td></tr>
+            </tbody>
+        </table>
+        <button class="nav-btn no-print" onclick="addAttendanceRow()">+ Add Member Row</button>
+    </div>
+
+    <!-- 4. CAMERA PAGE -->
+    <div id="page-camera" class="page-container" style="background-color: #ffffff;">
+        <h2 style="text-align: center; color: var(--primary-color);">SDMC ಸಭೆಯ ಛಾಯಾಚಿತ್ರ (Camera Capture)</h2>
+        <div class="camera-box">
+            <div class="no-print">
+                <button class="nav-btn" onclick="startCamera()">Start Back Camera</button>
+                <button class="nav-btn action-btn" onclick="capturePhoto()">Capture Photo</button>
+                <button class="nav-btn reset-btn" onclick="stopCamera()">Stop Camera</button>
+            </div>
+            <br>
+            <video id="video" autoplay playsinline></video>
+            <canvas id="canvas"></canvas>
+            <div>
+                <p><b>ಸೆರೆಹಿಡಿದ ಫೋಟೋ (A4 Portrait Adjusted Preview):</b></p>
+                <img id="photo-preview" alt="ಫೋಟೋ ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ...">
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. BILL PAGE 1: ಮಾರುತಿ ಪ್ರಾವಿಸನ್ ಸ್ಟೋರ್ -->
+    <div id="page-bill1" class="page-container" style="background-color: #ffffff;">
+        <div style="border: 2px solid #333; padding: 25px; border-radius: 6px; background: #fff;">
+            <div style="text-align: right; font-weight: bold;">Cash Memo</div>
+            <div style="text-align: center; font-size: 24px; font-weight: bold; color: var(--primary-color); margin: 5px 0;" contenteditable="true">[ ಅಂಗಡಿಯ ಹೆಸರು ]</div>
+            <p style="text-align: center; font-size: 13px; margin: 2px 0;"><span contenteditable="true">[ ವಿಳಾಸ ]</span> - Mob: <span contenteditable="true">[ ಮೊಬೈಲ್ ನಂಬರ್ ]</span></p>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 13px;">
+                <div>No: <span contenteditable="true">01</span></div>
+                <div>Date: <span contenteditable="true">DD-MM-YYYY</span></div>
+            </div>
+            <div style="margin-top: 8px; font-size: 13px;">M/s: <span contenteditable="true">SDMC Meeting Committee</span></div>
+
+            <div class="form-group no-print" style="margin-top: 15px;">
+                <label>ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ:</label>
+                <select id="item-select-1" onchange="addBillItem(1)">
+                    <option value="">-- ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ --</option>
+                    <option value="TEAPOWDER">TEAPOWDER</option>
+                    <option value="TEA CUPS">TEA CUPS</option>
+                    <option value="SUGAR">SUGAR</option>
+                    <option value="BISCUITS">BISCUITS</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">S.No.</th>
+                        <th style="width: 45%;">PARTICULARS</th>
+                        <th style="width: 15%;">QTY.</th>
+                        <th style="width: 15%;">RATE</th>
+                        <th style="width: 15%;">AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody id="bill1-tbody">
+                    <tr>
+                        <td contenteditable="true">1</td>
+                        <td contenteditable="true">TEAPOWDER</td>
+                        <td><input type="number" value="1" style="width: 50px;" oninput="calcBill(1)"></td>
+                        <td><input type="number" value="250" style="width: 70px;" oninput="calcBill(1)"></td>
+                        <td class="amt-cell">250.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <div style="font-size: 12px;">Amount in Word: <span contenteditable="true" id="bill1-words">Two Hundred Fifty Rupees Only</span></div>
+                <div style="text-align: right; font-weight: bold;">
+                    Total: ₹ <span id="bill1-total">250.00</span><br>
+                    Paid: ₹ <span id="bill1-paid">250.00</span><br>
+                    Due: ₹ <span contenteditable="true">0.00</span>
+                </div>
+            </div>
+            <div style="text-align: right; margin-top: 40px; font-weight: bold;">Signature</div>
+        </div>
+    </div>
+
+    <!-- 6. BILL PAGE 2: SRI VINAYAKA BOOKS AND XEROX CENTER -->
+    <div id="page-bill2" class="page-container" style="background-color: #ffffff;">
+        <div style="border: 2px solid #333; padding: 25px; border-radius: 6px; background: #fff;">
+            <div style="text-align: right; font-weight: bold;">Cash Memo</div>
+            <div style="text-align: center; font-size: 22px; font-weight: bold; color: var(--primary-color); margin: 5px 0;" contenteditable="true">[ ಅಂಗಡಿಯ ಹೆಸರು ]</div>
+            <p style="text-align: center; font-size: 13px; margin: 2px 0;"><span contenteditable="true">[ ವಿಳಾಸ ]</span> - Mob: <span contenteditable="true">[ ಮೊಬೈಲ್ ನಂಬರ್ ]</span></p>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 13px;">
+                <div>No: <span contenteditable="true">02</span></div>
+                <div>Date: <span contenteditable="true">DD-MM-YYYY</span></div>
+            </div>
+            <div style="margin-top: 8px; font-size: 13px;">M/s: <span contenteditable="true">SDMC Meeting Committee</span></div>
+
+            <div class="form-group no-print" style="margin-top: 15px;">
+                <label>ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ:</label>
+                <select id="item-select-2" onchange="addBillItem(2)">
+                    <option value="">-- ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ --</option>
+                    <option value="ಮಕ್ಕಳ ಹಕ್ಕುಗಳ ಸಾಹಿತ್ಯ">ಮಕ್ಕಳ ಹಕ್ಕುಗಳ ಸಾಹಿತ್ಯ</option>
+                    <option value="ಸಂವಿಧಾನದ ಪ್ರಸ್ತಾವನೆಯ ಹಾಳೆಗಳು">ಸಂವಿಧಾನದ ಪ್ರಸ್ತಾವನೆಯ ಹಾಳೆಗಳು</option>
+                    <option value="ಸಂವಿಧಾನದ ಮಹತ್ವದ ಸಾಹಿತ್ಯ">ಸಂವಿಧಾನದ ಮಹತ್ವದ ಸಾಹಿತ್ಯ</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">S.No.</th>
+                        <th style="width: 45%;">PARTICULARS</th>
+                        <th style="width: 15%;">QTY.</th>
+                        <th style="width: 15%;">RATE</th>
+                        <th style="width: 15%;">AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody id="bill2-tbody">
+                    <tr>
+                        <td contenteditable="true">1</td>
+                        <td contenteditable="true">ಮಕ್ಕಳ ಹಕ್ಕುಗಳ ಸಾಹಿತ್ಯ</td>
+                        <td><input type="number" value="1" style="width: 50px;" oninput="calcBill(2)"></td>
+                        <td><input type="number" value="450" style="width: 70px;" oninput="calcBill(2)"></td>
+                        <td class="amt-cell">450.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <div style="font-size: 12px;">Amount in Word: <span contenteditable="true" id="bill2-words">Four Hundred Fifty Rupees Only</span></div>
+                <div style="text-align: right; font-weight: bold;">
+                    Total: ₹ <span id="bill2-total">450.00</span><br>
+                    Paid: ₹ <span id="bill2-paid">450.00</span><br>
+                    Due: ₹ <span contenteditable="true">0.00</span>
+                </div>
+            </div>
+            <div style="text-align: right; margin-top: 40px; font-weight: bold;">Signature</div>
+        </div>
+    </div>
+
+    <!-- 7. BILL PAGE 3: VIDYA STUDIO AND STATIONERY SHOP -->
+    <div id="page-bill3" class="page-container" style="background-color: #ffffff;">
+        <div style="border: 2px solid #333; padding: 25px; border-radius: 6px; background: #fff;">
+            <div style="text-align: right; font-weight: bold;">Cash Memo</div>
+            <div style="text-align: center; font-size: 22px; font-weight: bold; color: var(--primary-color); margin: 5px 0;" contenteditable="true">[ ಅಂಗಡಿಯ ಹೆಸರು ]</div>
+            <p style="text-align: center; font-size: 13px; margin: 2px 0;"><span contenteditable="true">[ ವಿಳಾಸ ]</span> - Mob: <span contenteditable="true">[ ಮೊಬೈಲ್ ನಂಬರ್ ]</span></p>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 13px;">
+                <div>No: <span contenteditable="true">03</span></div>
+                <div>Date: <span contenteditable="true">DD-MM-YYYY</span></div>
+            </div>
+            <div style="margin-top: 8px; font-size: 13px;">M/s: <span contenteditable="true">SDMC Meeting Committee</span></div>
+
+            <div class="form-group no-print" style="margin-top: 15px;">
+                <label>ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ:</label>
+                <select id="item-select-3" onchange="addBillItem(3)">
+                    <option value="">-- ಐಟಮ್ ಆಯ್ಕೆಮಾಡಿ --</option>
+                    <option value="photocopy">photocopy</option>
+                    <option value="marker pens">marker pens</option>
+                    <option value="pens">pens</option>
+                    <option value="files">files</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">S.No.</th>
+                        <th style="width: 45%;">PARTICULARS</th>
+                        <th style="width: 15%;">QTY.</th>
+                        <th style="width: 15%;">RATE</th>
+                        <th style="width: 15%;">AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody id="bill3-tbody">
+                    <tr>
+                        <td contenteditable="true">1</td>
+                        <td contenteditable="true">photocopy</td>
+                        <td><input type="number" value="1" style="width: 50px;" oninput="calcBill(3)"></td>
+                        <td><input type="number" value="300" style="width: 70px;" oninput="calcBill(3)"></td>
+                        <td class="amt-cell">300.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <div style="font-size: 12px;">Amount in Word: <span contenteditable="true" id="bill3-words">Three Hundred Rupees Only</span></div>
+                <div style="text-align: right; font-weight: bold;">
+                    Total: ₹ <span id="bill3-total">300.00</span><br>
+                    Paid: ₹ <span id="bill3-paid">300.00</span><br>
+                    Due: ₹ <span contenteditable="true">0.00</span>
+                </div>
+            </div>
+            <div style="text-align: right; margin-top: 40px; font-weight: bold;">Signature</div>
+        </div>
+    </div>
+
+    <!-- Footer with Required Details (Visible on screen, hidden on Print) -->
+    <footer>
+        <div class="blinking-footer">
+            Prepared by : LAKSHMIKANTH R (Mob: 9844444871) | ಸಲಹೆ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ : VENKATARAMANAIAH PRESIDENT KSTPA C N HALLI TALUK TUMKUR DIST
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation Control
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-container');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Update Meeting Header details
+        function updateMeetingHeader() {
+            const sch = document.getElementById('rep-school').value || '[ಶಾಲೆಯ ಹೆಸರು]';
+            const clu = document.getElementById('rep-cluster').value || '[ಕ್ಲಸ್ಟರ್ ಹೆಸರು]';
+            const tal = document.getElementById('rep-taluk').value || '[ತಾಲ್ಲೂಕು ಹೆಸರು]';
+            const dt = document.getElementById('meeting-date').value || '[ದಿನಾಂಕ]';
+            const pres = document.getElementById('president-name').value || '[ಅಧ್ಯಕ್ಷರ ಹೆಸರು]';
+
+            document.getElementById('disp-school').innerText = sch;
+            document.getElementById('disp-cluster').innerText = clu;
+            document.getElementById('disp-taluk').innerText = tal;
+            document.getElementById('disp-date').innerText = dt;
+            document.getElementById('disp-president').innerText = pres;
+
+            alert("ವರದಿ ಪುಟದ ವಿವರಗಳು ಯಶಸ್ವಿಯಾಗಿ ಅಪ್‌ಡೇಟ್ ಆಗಿವೆ!");
+        }
+
+        // Attendance Dynamic Row Addition
+        function addAttendanceRow() {
+            const tbody = document.getElementById('attendance-tbody');
+            const rowCount = tbody.rows.length + 1;
+            const row = tbody.insertRow();
+            row.innerHTML = `<td>${rowCount}</td><td contenteditable="true"></td><td>MEMBER</td><td></td>`;
+        }
+
+        // Camera Functionality with Back Camera Support
+        let videoStream = null;
+        async function startCamera() {
+            const video = document.getElementById('video');
+            try {
+                const constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
+                try {
+                    videoStream = await navigator.mediaDevices.getUserMedia(constraints);
+                } catch (e) {
+                    videoStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                }
+                video.srcObject = videoStream;
+                video.style.display = 'block';
+            } catch (err) {
+                alert("ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ ಅಥವಾ ಅನುಮತಿ ಇಲ್ಲ: " + err);
+            }
+        }
+
+        function capturePhoto() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const preview = document.getElementById('photo-preview');
+            
+            if (!videoStream) {
+                alert("ದಯವಿಟ್ಟು ಮೊದಲು 'Start Back Camera' ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ!");
+                return;
+            }
+
+            canvas.width = video.videoWidth || 800;
+            canvas.height = video.videoHeight || 600;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            preview.src = canvas.toDataURL('image/png');
+        }
+
+        function stopCamera() {
+            if (videoStream) {
+                let tracks = videoStream.getTracks();
+                tracks.forEach(track => track.stop());
+                document.getElementById('video').style.display = 'none';
+                videoStream = null;
+            }
+        }
+
+        // Bill Dynamic Item Selection and Auto Calculation
+        function addBillItem(billNum) {
+            const select = document.getElementById(`item-select-${billNum}`);
+            const itemVal = select.value;
+            if(!itemVal) return;
+
+            const tbody = document.getElementById(`bill${billNum}-tbody`);
+            const rowCount = tbody.rows.length + 1;
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td contenteditable="true">${rowCount}</td>
+                <td contenteditable="true">${itemVal}</td>
+                <td><input type="number" value="1" style="width: 50px;" oninput="calcBill(${billNum})"></td>
+                <td><input type="number" value="100" style="width: 70px;" oninput="calcBill(${billNum})"></td>
+                <td class="amt-cell">100.00</td>
+            `;
+            calcBill(billNum);
+            select.selectedIndex = 0;
+        }
+
+        function calcBill(billNum) {
+            const tbody = document.getElementById(`bill${billNum}-tbody`);
+            let total = 0;
+            for (let i = 0; i < tbody.rows.length; i++) {
+                let row = tbody.rows[i];
+                let qtyInput = row.cells[2].querySelector('input');
+                let rateInput = row.cells[3].querySelector('input');
+                let amtCell = row.cells[4];
+
+                let qty = parseFloat(qtyInput ? qtyInput.value : 0) || 0;
+                let rate = parseFloat(rateInput ? rateInput.value : 0) || 0;
+                let amt = qty * rate;
+
+                amtCell.innerText = amt.toFixed(2);
+                total += amt;
+            }
+            document.getElementById(`bill${billNum}-total`).innerText = total.toFixed(2);
+            document.getElementById(`bill${billNum}-paid`).innerText = total.toFixed(2);
+        }
+
+        // Reset Data Function
+        function resetAllData() {
+            if (confirm("ನೀವು ಎಲ್ಲಾ ನಮೂದಿಸಿದ ವಿವರಗಳನ್ನು ರೀಸೆಟ್ ಮಾಡಲು ಬಯಸುವಿರಾ?")) {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
